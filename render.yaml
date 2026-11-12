@@ -35,9 +35,11 @@ services:
         value: Asia/Kolkata
       - key: N8N_DEFAULT_BINARY_DATA_MODE
         value: filesystem
-      # Render free tier has 512 MB RAM; cap V8 heap to leave room for OS and task runners.
+      # Render free tier has 512 MB RAM; cap main + JS runner heaps to avoid OOM/broker stalls.
       - key: NODE_OPTIONS
-        value: "--max-old-space-size=384"
+        value: "--max-old-space-size=256"
+      - key: N8N_RUNNERS_MAX_OLD_SPACE_SIZE
+        value: "64"
       - key: EXECUTIONS_DATA_PRUNE
         value: "true"
       - key: EXECUTIONS_DATA_MAX_AGE
