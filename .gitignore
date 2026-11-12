@@ -1,0 +1,12 @@
+# Environment secrets
+.env
+.env.*
+!.env.example
+
+# Local n8n runtime data
+.n8n/
+
+# OS & editor files
+.DS_Store
+Thumbs.db
+*.log
