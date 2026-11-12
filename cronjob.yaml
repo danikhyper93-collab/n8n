@@ -1,0 +1,8 @@
+# Cron job configuration to ping the Render /healthz endpoint every 10 minutes
+# Replace <your-service> with your actual Render service subdomain.
+name: n8n-keep-alive
+schedule: "*/10 * * * *"
+target:
+  url: "https://<your-service>.onrender.com/healthz"
+  method: GET
+  timeoutSeconds: 30
